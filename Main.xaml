@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="852.8,3283.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="852.8,3316.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -47,6 +47,7 @@
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>Microsoft.Graph</x:String>
       <x:String>System.Windows.Controls</x:String>
+      <x:String>UiPath.Activities.Contracts</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -119,25 +120,22 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="750.4,3218.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="795.2,3252" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Invoice" />
       <Variable x:TypeArguments="s:String[]" Name="array1" />
-      <Variable x:TypeArguments="s:String[]" Name="array2">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="new String(){}" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="s:String[]" Default="[new String(){}]" Name="array2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_Invoice]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="688,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="Input\VendorID_Input.xlsx" />
-    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,3009.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_Invoice]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="732.8,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="Input\VendorID_Input.xlsx" />
+    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="732.8,3043.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="vendor_Tax_ID" />
         <Variable x:TypeArguments="x:String" Name="invoice_Item" />
@@ -149,31 +147,31 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Invoice]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="625.6,2788.8" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Invoice]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="670.4,2822.4" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,2591.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="636.8,2624.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <uix:NApplicationCard AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Chrome: ACME System 1 - Dashboard" sap:VirtualizedContainerService.HintSize="529.6,2504.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V2">
+              <uix:NApplicationCard AttachMode="ByInstance" CloseMode="IfOpenedByAppBrowser" DisplayName="Use Browser Chrome: ACME System 1 - Dashboard" sap:VirtualizedContainerService.HintSize="574.4,2538.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_4" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V2">
                 <uix:NApplicationCard.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                     </ActivityAction.Argument>
-                    <Sequence sap:VirtualizedContainerService.HintSize="496,2264.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence sap:VirtualizedContainerService.HintSize="540.8,2298.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search for Invoice'" sap:VirtualizedContainerService.HintSize="433.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V3">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search for Invoice'" sap:VirtualizedContainerService.HintSize="478.4,225.6" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V3">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/home" DesignTimeRectangle="609, 607, 311, 33" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Search for Invoice' parentid='dashmenu' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Search for Invoice' parentid='dashmenu' tag='A' type='' class='' check:innerText='Search for Invoice' /&gt;" Guid="fe746ccb-8e4a-4d59-bc61-1c08318689f2" InformativeScreenshot="22fb97ac45a48f44ababbb2a01b49a47.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -195,7 +193,7 @@
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Invoice Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Text="[CurrentRow(&quot;Invoice Number&quot;.Trim).ToString]" Version="V3">
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Invoice Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="478.4,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Text="[CurrentRow(&quot;Invoice Number&quot;.Trim).ToString]" Version="V3">
                         <uix:NTypeInto.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search" CVScreenId="40d98b8e-c23a-4dc7-9431-16bf880fb06a" CvElementArea="341, 685, 610, 48" CvType="InputBox" DesignTimeRectangle="344, 688, 606, 42" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='invoiceNumber' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='invoiceNumber' tag='INPUT' type='text' class='form-control' aaname='' /&gt;" Guid="18585543-a427-47e7-a3c8-0b6444f25905" InformativeScreenshot="69a14789d189380462b05519367382e7.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -216,7 +214,7 @@
                           </uix:VerifyExecutionTypeIntoOptions>
                         </uix:NTypeInto.VerifyOptions>
                       </uix:NTypeInto>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search for Invoice'" sap:VirtualizedContainerService.HintSize="433.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V3">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Search for Invoice'" sap:VirtualizedContainerService.HintSize="478.4,225.6" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V3">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search" CVScreenId="862644fd-be85-4515-9c2b-41898336bab0" CvElementArea="341, 746, 91, 46" CvTextArea="358, 760, 58, 17" CvTextArgument="Search" CvType="Button" DesignTimeRectangle="344, 749, 87, 42" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='buttonSearch' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='buttonSearch' tag='BUTTON' type='button' class='btn btn-primary' aaname='Search' check:innerText='Search' /&gt;" Guid="e6f06e9e-f84b-4818-8bd4-d453728b6ddb" InformativeScreenshot="0b2a0b2d8482673f7703ca3d3fb2d5aa.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -237,7 +235,7 @@
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[vendor_Tax_ID]" Version="V3">
+                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="478.4,189.6" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[vendor_Tax_ID]" Version="V3">
                         <uix:NGetText.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search-by-number/308674" CVScreenId="7b43c673-770f-4110-a4bf-fc6ad59746cf" CvTextArea="730, 675, 83, 17" CvType="AnyWordGroup" DesignTimeRectangle="642, 663, 265, 45" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='' tag='TD' /&gt;" Guid="1819a5b9-5cff-4b61-b17c-85c1c32ccdbd" InformativeScreenshot="4a1d8656fad1b4dd50a62fedd10dcad8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search Results' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -248,7 +246,7 @@
                           </uix:TargetAnchorable>
                         </uix:NGetText.Target>
                       </uix:NGetText>
-                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[invoice_Item]" Version="V3">
+                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="478.4,189.6" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[invoice_Item]" Version="V3">
                         <uix:NGetText.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search-by-number/308674" CVScreenId="7b43c673-770f-4110-a4bf-fc6ad59746cf" CvTextArea="984, 675, 82, 21" CvType="AnyWordGroup" DesignTimeRectangle="907, 663, 238, 45" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='' tag='TD' /&gt;" Guid="c9f67457-6927-4ef0-a49a-fd3e93b2c6d3" InformativeScreenshot="9acd33835fd886ba55e854de1b9706e0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search Results' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -259,7 +257,7 @@
                           </uix:TargetAnchorable>
                         </uix:NGetText.Target>
                       </uix:NGetText>
-                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[Total]" Version="V3">
+                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="478.4,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[Total]" Version="V3">
                         <uix:NGetText.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search-by-number/308674" CVScreenId="7b43c673-770f-4110-a4bf-fc6ad59746cf" CvTextArea="1210, 675, 102, 17" CvType="AnyWordGroup" DesignTimeRectangle="1145, 663, 236, 45" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableCol='4' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='' tag='TD' /&gt;" Guid="4f26fc1f-9d53-4469-98bb-0f57b1635213" InformativeScreenshot="9b2207abbe52a06b60f8a2860029b78e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search Results' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -270,7 +268,7 @@
                           </uix:TargetAnchorable>
                         </uix:NGetText.Target>
                       </uix:NGetText>
-                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[date_Current_Invoice]" Version="V3">
+                      <uix:NGetText DisplayName="Get Text 'Vendor Tax ID'" sap:VirtualizedContainerService.HintSize="478.4,189.6" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" TextString="[date_Current_Invoice]" Version="V3">
                         <uix:NGetText.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search-by-number/308674" CVScreenId="7b43c673-770f-4110-a4bf-fc6ad59746cf" CvTextArea="1440, 675, 88, 17" CvType="AnyWordGroup" DesignTimeRectangle="1381, 663, 212, 45" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableCol='5' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='' tag='TD' /&gt;" Guid="9356a063-c130-4080-bf8b-551a961da615" InformativeScreenshot="5a4bcc096637fce096dc16f7b0b6b55a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search Results' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -281,7 +279,7 @@
                           </uix:TargetAnchorable>
                         </uix:NGetText.Target>
                       </uix:NGetText>
-                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Home'" sap:VirtualizedContainerService.HintSize="433.6,225.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V3">
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Home'" sap:VirtualizedContainerService.HintSize="478.4,225.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="22a014ad-efa0-4bff-a26e-81effe0f2c7e" Version="V3">
                         <uix:NClick.Target>
                           <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/invoices/search-by-number/308674" CVScreenId="64ba686e-d452-4558-a1aa-ff34ad96f22a" CvTextArea="274, 395, 48, 16" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="275, 393, 47, 20" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Home' href='https://acme-test.uipath.com/home' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Home' href='https://acme-test.uipath.com/home' tag='A' type='' class='' check:innerText='Home' /&gt;" Guid="f32da1d8-16a5-4c46-a829-1592d66285ed" InformativeScreenshot="02d3ec869a2f1850450d5f6e25a784c3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Search Results' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                             <uix:TargetAnchorable.Anchors>
@@ -302,7 +300,7 @@
                           </uix:VerifyExecutionOptions>
                         </uix:NClick.VerifyOptions>
                       </uix:NClick>
-                      <Assign sap:VirtualizedContainerService.HintSize="433.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign sap:VirtualizedContainerService.HintSize="478.4,114.4" sap2010:WorkflowViewState.IdRef="Assign_2">
                         <Assign.To>
                           <OutArgument x:TypeArguments="s:String[]">[array1]</OutArgument>
                         </Assign.To>
@@ -310,7 +308,21 @@
                           <InArgument x:TypeArguments="s:String[]">[New String() {Total, invoice_Item, vendor_Tax_ID, date_Current_Invoice}]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="433.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,149.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                        <ui:MultipleAssign.AssignOperations>
+                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("Vendor Tax ID")]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:Object">[vendor_Tax_ID.ToString]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                          </scg:List>
+                        </ui:MultipleAssign.AssignOperations>
+                      </ui:MultipleAssign>
+                      <Assign sap:VirtualizedContainerService.HintSize="478.4,114.4" sap2010:WorkflowViewState.IdRef="Assign_3">
                         <Assign.To>
                           <OutArgument x:TypeArguments="s:String[]">[array2]</OutArgument>
                         </Assign.To>
@@ -318,8 +330,7 @@
                           <InArgument x:TypeArguments="s:String[]">[array2.Concat(array1).ToArray]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="433.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[array1(0).ToString]" />
-                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="433.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Total + invoice_Item + vendor_Tax_ID + date_Current_Invoice]" />
+                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="478.4,110.4" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Total + invoice_Item + vendor_Tax_ID + date_Current_Invoice]" />
                     </Sequence>
                   </ActivityAction>
                 </uix:NApplicationCard.Body>
@@ -331,7 +342,7 @@
           </ActivityAction>
         </ui:ForEachRow.Body>
       </ui:ForEachRow>
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="625.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[string.Join(&quot;, &quot;, array2)]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="670.4,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[string.Join(&quot;, &quot;, array2)]" />
     </Sequence>
   </Sequence>
 </Activity>
